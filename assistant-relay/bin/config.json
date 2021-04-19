@@ -1,0 +1,61 @@
+{
+  "port": 3000,
+  "muteStartup": false,
+  "quietHours": {
+    "enabled": false,
+    "start": "22:00",
+    "end": "08:00"
+  },
+  "maxResponses": 5,
+  "conversation": {
+    "audio": {
+      "encodingIn": "LINEAR16",
+      "sampleRateIn": 16000,
+      "encodingOut": "LINEAR16",
+      "sampleRateOut": 24000
+    },
+    "lang": "fr-FR",
+    "screen": {
+      "isOn": false
+    }
+  },
+  "users": [
+    {
+      "name": "Alexandre",
+      "secret": {
+        "installed": {
+          "client_id": "530096714912-a4bdnasjo8v4dhedvuor8tl0qfqtrj1p.apps.googleusercontent.com",
+          "project_id": "assistant-relay-41906",
+          "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+          "token_uri": "https://oauth2.googleapis.com/token",
+          "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+          "client_secret": "P8ghE7-MsmE7gkfd2nZjJQ2M",
+          "redirect_uris": [
+            "urn:ietf:wg:oauth:2.0:oob",
+            "http://localhost"
+          ]
+        }
+      },
+      "tokens": {
+        "access_token": "ya29.a0AfH6SMB5TAMzaSSEp70HnkoKJTcFmPOsZdW35_BNDSzSFKyq7gwtTfhB6wiB2XWvzn3JHoV-UGxytyuOp48-uNUEJ9kW23YFggyiRY1h53_YogA8B_BLT-bD6Bb5BwVgCKtx4mJmNWWnFLRC97BU746aFvGE",
+        "refresh_token": "1//03nD9T30yTE_GCgYIARAAGAMSNwF-L9Irkw8kHs4TqLWKN9O7ZC9DlRYOh7FFiqbaaqG9Zl79jAKUcLjpVMHXYraJAT5321_vVVc",
+        "scope": "https://www.googleapis.com/auth/assistant-sdk-prototype",
+        "token_type": "Bearer",
+        "expiry_date": 1618836797757
+      }
+    }
+  ],
+  "responses": [
+    {
+      "command": "allume lampadaire alex",
+      "response": "",
+      "timestamp": 1618833254764
+    },
+    {
+      "command": "eteint lampadaire alex",
+      "response": "",
+      "timestamp": 1618833265638
+    }
+  ],
+  "devices": []
+}
