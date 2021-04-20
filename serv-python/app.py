@@ -18,7 +18,7 @@ def home():
     if remoteid is not None:
         return remote["remote"][remoteid]
 
-@app.route('/status', methods = ['GET','POST'])
+@app.route('/statut', methods = ['GET','POST'])
 def status():
     status = request.args.get('stat')
     if status == "on":
