@@ -47,14 +47,29 @@
   ],
   "responses": [
     {
+      "command": "etient lampadaire alex",
+      "response": "",
+      "timestamp": 1618852868190
+    },
+    {
       "command": "allume lampadaire alex",
       "response": "",
-      "timestamp": 1618833254764
+      "timestamp": 1618925976083
     },
     {
       "command": "eteint lampadaire alex",
       "response": "",
-      "timestamp": 1618833265638
+      "timestamp": 1618926000332
+    },
+    {
+      "command": "allume lampadaire alex",
+      "response": "",
+      "timestamp": 1618937296085
+    },
+    {
+      "command": "eteint lampadaire alex",
+      "response": "",
+      "timestamp": 1618937309837
     }
   ],
   "devices": []
