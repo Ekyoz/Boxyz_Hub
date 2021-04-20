@@ -7,10 +7,7 @@ app = Flask(__name__)
 remotejson = open("/home/alexandre/Bureau/Projet/Domotic/serv-python/remote.json", "r")
 remote=json.load(remotejson)
 url="http://192.168.1.29:3000/assistant"
-obj= {
-    "user": "Alexandre",
-    "command": "allume lampadaire alex"
-}
+
 
 #--------------------------------------------Home----------------------------------------#
 @app.route('/remote', methods = ['GET'])
@@ -25,11 +22,19 @@ def home():
 def status():
     status = request.args.get('stat')
     if status == "on":
-        requests.post(url=url, data=obj)
+        requests.post(url=url, data={
+            "user": "Alexandre",
+            "command": "allume lampadaire alex"
+        })
         print("work")
         return "ok"
     elif status == "off":
-        return "not ok"
+        requests.post(url=url, data={
+            "user": "Alexandre",
+            "command": "eteint lampadaire alex"
+        })
+        print("work")
+        return "ok"
     else:
         return "Argument missing"
 
