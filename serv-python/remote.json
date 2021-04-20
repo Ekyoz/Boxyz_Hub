@@ -1,0 +1,16 @@
+{
+    "remote": {
+        "01": {
+            "name": "salon",
+            "ip": "192.168.1.64",
+            "mac": "ad.gr.2d.er.se.t1",
+            "function": "allume lampadaire"
+        },
+        "02": {
+            "name": "chambre",
+            "ip": "192.168.1.64",
+            "mac": "ad.gr.2d.er.se.t1",
+            "function": "allume lampadaire"
+        }
+    }
+}
