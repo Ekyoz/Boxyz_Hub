@@ -26,13 +26,13 @@ def home():
 def status():
     status = request.args.get('stat')
     mac = request.args.get('mac')
-    print(mac)
     if status == "on":
         requests.post(url=url, data={
             "user": "Alexandre",
             "command": "allume lampadaire alex"
         })
         print("work")
+        print(mac)
         return "ok"
     elif status == "off":
         requests.post(url=url, data={
