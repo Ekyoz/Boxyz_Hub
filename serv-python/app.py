@@ -23,7 +23,7 @@ def home():
         return remote["remote"][remoteid]
 
 @app.route('/button', methods = ['GET','POST'])
-def status():
+def button():
     status = request.args.get('stat')
     mac = request.args.get('mac')
     if status == "on":
