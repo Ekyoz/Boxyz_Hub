@@ -5,8 +5,12 @@ import json
 app = Flask(__name__)
 
 remotejson = open("/home/alexandre/Bureau/Projet/Domotic/serv-python/remote.json", "r")
-remote=json.load(remotejson)
+remote = json.load(remotejson)
+for valeur in remote.values():
+    print(valeur)
+
 url="http://192.168.1.29:3000/assistant"
+
 
 
 #--------------------------------------------Home----------------------------------------#
@@ -18,9 +22,10 @@ def home():
     if remoteid is not None:
         return remote["remote"][remoteid]
 
-@app.route('/statut', methods = ['GET','POST'])
+@app.route('/button', methods = ['GET','POST'])
 def status():
     status = request.args.get('stat')
+    mac = request.args.get('mac')
     if status == "on":
         requests.post(url=url, data={
             "user": "Alexandre",
