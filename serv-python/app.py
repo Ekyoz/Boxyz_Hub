@@ -26,6 +26,7 @@ def home():
 def status():
     status = request.args.get('stat')
     mac = request.args.get('mac')
+    print(mac)
     if status == "on":
         requests.post(url=url, data={
             "user": "Alexandre",
