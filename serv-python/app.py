@@ -27,13 +27,15 @@ def del_remote():
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
+    with open(access, "r") as f:
+        remote = json.load(f)
     num = remotenum()
     if info == "num":
         return str(num)
     if info == "json":
-        return open(access, "r")
+        return remote
     elif info == None:
-        return open(access, "r"), str(num)
+        return remote, str(num)
 
 
 @app.route('/button', methods = ['GET','POST'])
