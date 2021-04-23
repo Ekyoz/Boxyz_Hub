@@ -34,7 +34,7 @@ def remote():
         return str(num)
     if info == "json":
         return str(remote)
-    if info is None or "":
+    if info is None or info == "":
         return 'Argument missing'
 
 @app.route('/button', methods = ['GET','POST'])
