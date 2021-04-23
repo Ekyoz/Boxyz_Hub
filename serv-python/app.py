@@ -1,13 +1,10 @@
 from flask import Flask, request, render_template, session, redirect
 import requests
 import json
-from remote import addremote, delremote, remote_info
+from remote import addremote, delremote, access, remote_num
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
-info_stat = remote_info()
-print(info_stat)
-
 
 
 #--------------------------------------------Home----------------------------------------#
@@ -30,14 +27,18 @@ def del_remote():
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
-    if info is None:
-        return remote_info()
+    with open(access, "r") as f:
+        remote = json.load(f)
+            
+    for num in remote.keys():
+        remote_num.append(num)
+
+    if info == "num":
+        return remote_num
     if info == "json":
-        return remote_info("json")
-    elif info == "num":
-        return remote_info("num")
-    else:
-        return 'Argument invalid'
+        return remote
+    elif info == None:
+        return remote, remote_num
 
 
 @app.route('/button', methods = ['GET','POST'])
