@@ -1,12 +1,11 @@
 from flask import Flask, request, render_template, session, redirect
 import requests
 import json
-from remote import addremote
+from remote import *
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
-addremote(mac="test", name="test", func="test", ip="test")
-
+del_remote("test")
 
 
 #--------------------------------------------Home----------------------------------------#
@@ -16,7 +15,7 @@ def add_remote():
     name = request.args.get('name')
     func = request.args.get('func')
     ip = request.args.get('ip')
-    addremote(mac="test", name="test", func="test", ip="test")
+    addremote(mac=mac, name=name, func=func, ip=ip)
     return 'ok'
 
 
