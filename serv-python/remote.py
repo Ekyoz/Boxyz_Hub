@@ -9,7 +9,9 @@ def remotenum():
         remote = json.load(f)
     for num in remote.keys():
         remote_num.append(num)
+    remote_num =  []
     return remote_num
+
 
 
 def addremote(mac, name, func, ip):
