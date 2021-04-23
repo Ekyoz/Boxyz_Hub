@@ -4,7 +4,7 @@ import json
 from remote import addremote, delremote, remotenum, access
 
 app = Flask(__name__)
-url="http://192.168.1.29:3000/assistant"
+url="http://localhost:3000/assistant"
 
 #--------------------------------------------Home----------------------------------------#
 @app.route('/remote', methods=['GET'])
