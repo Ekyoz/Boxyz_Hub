@@ -4,11 +4,14 @@ import requests
 import json
 
 app = Flask(__name__)
+remote_num =  []
 
 remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
 for num in remote.keys():
-    print(num)
-    
+    remote_num.append(num)
+    print(remote_num)
+
+
 
 
 url="http://192.168.1.29:3000/assistant"
