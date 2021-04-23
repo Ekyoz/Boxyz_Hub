@@ -10,7 +10,7 @@ remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
 for num in remote.keys():
     remote_num.append(num)
 
-remote["bc:dd:c2:55:63"] = ["name"]["test"]
+remote["bc:dd:c2:55:63"] = str(["name"]["test"])
 print(remote)
 
 print(remote_num)
