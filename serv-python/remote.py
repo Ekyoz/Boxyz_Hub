@@ -16,13 +16,9 @@ def add_remote(mac, name, func, ip):
         remote = json.load(f)
 
     with open(access, "w") as f:
-        try:
-            remote[mac] = {"name" : str(name), "func" : str(func), "ip" : str(ip)}
-            remote.pop("bc:dd:c2:55:63", None)
-            json.dump(remote, f, indent=6)
-            return "ok"
-        except:
-            return "argument missing or invalid"
+        remote[mac] = {"name" : str(name), "func" : str(func), "ip" : str(ip)}
+        remote.pop("bc:dd:c2:55:63", None)
+        json.dump(remote, f, indent=6)
 
 
 def del_remote(keys):
