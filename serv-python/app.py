@@ -62,11 +62,17 @@ def button():
         remote = json.load(f)
     if mac in num:
         if status == "on":
-            requests.post(url=url, data=remote[mac]["func_on"])
-            return 'Ok, turn on!'
+            try:
+                requests.post(url=url, data=remote[mac]["func_on"])
+                return 'Ok, turn on!'
+            except:
+                return 'The server is down or cannot connect!'
         elif status == "off":
-            requests.post(url=url, data=remote[mac]["func_off"])
-            return 'Ok, turn off!'
+            try:
+                requests.post(url=url, data=remote[mac]["func_off"])
+                return 'Ok, turn off!'
+            except:
+                return 'The server is down or cannot connect!'
     else:
         return 'Remote not exist!'
 
