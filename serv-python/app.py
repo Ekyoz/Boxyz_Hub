@@ -1,25 +1,9 @@
-from os import removedirs
 from flask import Flask, request, render_template, session, redirect
 import requests
 import json
+import remote
 
 app = Flask(__name__)
-remote_num =  []
-
-file = open("/home/pi/Boxyz/serv-python/remote.json", "r")
-remote = json.load(file)
-for num in remote.keys():
-    remote_num.append(num)
-file.close()
-
-file = open("/home/pi/Boxyz/serv-python/remote.json", "w")
-
-remote["bc:dd:c2:55:63"] = {"name" : "test", "func" : "test", "ip" : "192.168.1.25"}
-json.dump(remote, file)
-file.close()
-
-print(remote)
-
 url="http://192.168.1.29:3000/assistant"
 
 
@@ -30,6 +14,8 @@ def add_remote():
     name = request.args.get('name')
     func = request.args.get('func')
     ip = request.args.get('ip')
+    add_remote(mac=mac, name=name, ip=ip, func=func)
+
 
 
 @app.route('/button', methods = ['GET','POST'])
