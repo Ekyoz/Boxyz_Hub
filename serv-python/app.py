@@ -4,25 +4,12 @@ import json
 
 app = Flask(__name__)
 
-remotejson = open("/home/pi/Boxyz/serv-python/remote.json", "r")
-remote = json.load(remotejson)
-print(remote["remote"])
+remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
 
 url="http://192.168.1.29:3000/assistant"
 
 
 #--------------------------------------------Home----------------------------------------#
-@app.route('/remote', methods = ['GET','POST'])
-def remote():
-    #remoteid = request.args.get('id')
-    '''
-    if remoteid is None:
-        return remote["remote"]
-    if remoteid is not None:
-        return remote["remote"][remoteid]
-    '''
-    return str(int(remote["remote"]))
-
 @app.route('/button', methods = ['GET','POST'])
 def button():
     status = request.args.get('stat')
