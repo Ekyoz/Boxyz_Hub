@@ -5,12 +5,12 @@ from remote import addremote, delremote, remotenum, access
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
-num = remotenum()
 
 #--------------------------------------------Home----------------------------------------#
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
+    num = remotenum()
     with open(access, "r") as f:
         remote = json.load(f)
     if info == "num":
@@ -57,6 +57,7 @@ def del_remote():
 def button():
     status = request.args.get('stat')
     mac = request.args.get('mac')
+    num = remotenum()
     with open(access, "r") as f:
         remote = json.load(f)
     if mac in num:
