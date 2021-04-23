@@ -9,9 +9,9 @@ def remote_info(info=None):
         remote = json.load(f)
     for num in remote.keys():
         remote_num.append(num)
-    if info == num:
+    if info == "num":
         print(remote_num)
-    if info == json:
+    if info == "json":
         print(remote)
     elif info == None:
         print(remote, remote_num)
