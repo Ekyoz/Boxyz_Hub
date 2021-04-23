@@ -6,15 +6,12 @@ app = Flask(__name__)
 
 remotejson = open("../serv-python/remote.json", "r")
 remote = json.load(remotejson)
-for valeur in remote.values():
-    print(valeur)
 
 url="http://192.168.1.29:3000/assistant"
 
 
-
 #--------------------------------------------Home----------------------------------------#
-@app.route('/remote', methods = ['GET'])
+@app.route('/remote', methods = ['GET','POST'])
 def home():
     remoteid = request.args.get('id')
     if remoteid is None:
