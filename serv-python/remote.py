@@ -1,20 +1,20 @@
 import json
 from os import access
 
-access = "../serv-python/remote.json"
+access = "serv-python/remote.json"
 
-def remote_info(info):
+def remote_info(info=None):
     remote_num =  []
     with open(access, "r") as f:
         remote = json.load(f)
     for num in remote.keys():
         remote_num.append(num)
     if info == num:
-        return remote_num
+        print(remote_num)
     if info == json:
-        return remote
+        print(remote)
     elif info == None:
-        return remote and remote_num
+        print(remote, remote_num)
 
 def addremote(mac, name, func, ip):
     with open(access, "r") as f:
@@ -33,5 +33,3 @@ def delremote(keys):
     with open(access, "w") as f:
         remote.pop(keys, None)
         json.dump(remote, f, indent=6)
-
-

@@ -29,7 +29,6 @@ def del_remote():
 def remote():
     info = request.args.get('info')
     info_stat = remote_info(info)
-    print(info_stat)
     return info_stat
 
 
