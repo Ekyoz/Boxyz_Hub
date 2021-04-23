@@ -5,7 +5,13 @@ from remote import addremote, delremote, remotenum, access_remote, url, access_u
 
 app = Flask(__name__)
 
-#--------------------------------------------Home----------------------------------------#
+with open(access_user, "r") as f:
+    user = json.load(f)
+
+
+print(str(user["users"][0]["name"]))
+
+#--------------------------------------------Remote----------------------------------------#
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
@@ -19,6 +25,8 @@ def remote():
     if info is None or info == "":
         return 'Argument missing!'
 
+
+#--------------------------------------------Add remote----------------------------------------#
 @app.route('/add_remote', methods = ['GET'])
 def add_remote():
     mac = request.args.get('mac')
@@ -37,6 +45,7 @@ def add_remote():
         return 'Error, Argument missing! \n Check this!'
 
 
+#--------------------------------------------Del remote----------------------------------------#
 @app.route('/del_remote', methods=['GET'])
 def del_remote():
     key = request.args.get('keys')
@@ -52,6 +61,7 @@ def del_remote():
         return 'Error! Check argument.'
 
 
+#--------------------------------------------Button----------------------------------------#
 @app.route('/button', methods = ['GET'])
 def button():
     status = request.args.get('stat')
