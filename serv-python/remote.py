@@ -1,8 +1,11 @@
 import json
 from os import access
 
-access = "../serv-python/remote.json"
+access_remote = "../serv-python/remote.json"
+access_user = "assistant-relay/bin/config.json"
 remote_num =  []
+url="http://localhost:3000/assistant"
+
 
 def remotenum():
     remote_num =  []
