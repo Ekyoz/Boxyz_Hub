@@ -28,7 +28,9 @@ def del_remote():
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
-    return remote_info(info)
+    info_stat = remote_info(info)
+    print(info_stat)
+    return info_stat
 
 
 @app.route('/button', methods = ['GET','POST'])

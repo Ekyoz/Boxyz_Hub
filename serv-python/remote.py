@@ -13,7 +13,7 @@ def remote_info(info):
         return remote_num
     if info == json:
         return remote
-    elif info == all:
+    elif info == None:
         return remote and remote_num
 
 def addremote(mac, name, func, ip):
