@@ -14,8 +14,14 @@ def add_remote():
     name = request.args.get('name')
     func = request.args.get('func')
     ip = request.args.get('ip')
-    addremote(mac, name, func, ip)
-    return 'ok'
+    with open(access, "r") as f:
+        remote = json.load(f)
+
+    if mac in remote:
+        return 'Already exist'
+    else:
+        addremote(mac, name, func, ip)
+        return 'ok'
 
 
 @app.route('/del_remote', methods=['GET'])

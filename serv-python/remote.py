@@ -20,7 +20,6 @@ def addremote(mac, name, func, ip):
 
     with open(access, "w") as f:
         remote[mac] = {"name" : str(name), "func" : str(func), "ip" : str(ip)}
-        remote.pop("bc:dd:c2:55:63", None)
         json.dump(remote, f, indent=6)
 
 
