@@ -5,11 +5,7 @@ from remote import addremote, delremote, remotenum, access
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
-
 num = remotenum()
-
-
-
 
 #--------------------------------------------Home----------------------------------------#
 @app.route('/remote', methods=['GET'])
