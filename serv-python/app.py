@@ -5,14 +5,29 @@ from remote import addremote, delremote, remotenum, access
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
+num = remotenum()
+
 
 
 #--------------------------------------------Home----------------------------------------#
+@app.route('/remote', methods=['GET'])
+def remote():
+    info = request.args.get('info')
+    with open(access, "r") as f:
+        remote = json.load(f)
+    if info == "num":
+        return str(num)
+    if info == "json":
+        return jsonify(str(remote))
+    if info is None or info == "":
+        return 'Argument missing'
+
 @app.route('/add_remote', methods = ['GET'])
 def add_remote():
     mac = request.args.get('mac')
     name = request.args.get('name')
-    func = request.args.get('func')
+    func_on = request.args.get('func_on')
+    func_off = request.args.get('func_off')
     ip = request.args.get('ip')
     with open(access, "r") as f:
         remote = json.load(f)
@@ -20,7 +35,7 @@ def add_remote():
     if mac in remote:
         return 'Already exist'
     else:
-        addremote(mac, name, func, ip)
+        addremote(mac, name, func_on, func_off, ip)
         return 'ok'
 
 
@@ -30,24 +45,19 @@ def del_remote():
     delremote(key)
     return 'ok'
 
-@app.route('/remote', methods=['GET'])
-def remote():
-    info = request.args.get('info')
-    with open(access, "r") as f:
-        remote = json.load(f)
-    num = remotenum()
-    if info == "num":
-        return str(num)
-    if info == "json":
-        return jsonify(str(remote))
-    if info is None or info == "":
-        return 'Argument missing'
 
-@app.route('/button', methods = ['GET','POST'])
+@app.route('/button', methods = ['GET'])
 def button():
     status = request.args.get('stat')
-    ip = request.args.get('mac')
-    requests.post(url=url, data=remote)
+    mac = request.args.get('mac')
+    with open(access, "r") as f:
+        remote = json.load(f)
+    if status == "on":
+    if mac in num:
+        requests.post(url=url, data=remote[mac]["function"])
+        return 'ok'
+    else:
+        return 'Remote or argument is invalid'
 
 
 

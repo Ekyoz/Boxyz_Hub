@@ -14,12 +14,12 @@ def remotenum():
 
 
 
-def addremote(mac, name, func, ip):
+def addremote(mac, name, func_on, func_off, ip):
     with open(access, "r") as f:
         remote = json.load(f)
 
     with open(access, "w") as f:
-        remote[mac] = {"name" : str(name), "func" : str(func), "ip" : str(ip)}
+        remote[mac] = {"name" : str(name), "func_on" : str(func_on),"func_off" : str(func_off) , "ip" : str(ip)}
         json.dump(remote, f, indent=6)
 
 
