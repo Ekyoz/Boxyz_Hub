@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, session, redirect
 import requests
 import json
-from remote import addremote, delremote
+from remote import addremote, delremote, remote_info
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
@@ -23,6 +23,12 @@ def add_remote():
 def del_remote():
     key = request.args.get('keys')
     delremote(key)
+    return 'ok'
+
+@app.route('/remote', methods=['GET'])
+def remote():
+    info = request.args.get('info')
+    return remote_info(info)
 
 
 @app.route('/button', methods = ['GET','POST'])

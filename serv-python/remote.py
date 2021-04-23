@@ -3,13 +3,18 @@ from os import access
 
 access = "../serv-python/remote.json"
 
-def remote_num():
+def remote_info(info):
     remote_num =  []
     with open(access, "r") as f:
         remote = json.load(f)
     for num in remote.keys():
         remote_num.append(num)
-    return remote_num
+    if info == num:
+        return remote_num
+    if info == json:
+        return remote
+    elif info == all:
+        return remote and remote_num
 
 def addremote(mac, name, func, ip):
     with open(access, "r") as f:
