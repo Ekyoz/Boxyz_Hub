@@ -1,8 +1,15 @@
 import json
 from os import access
 
-access = "../serv-python/remote.json"
+access = "serv-python/remote.json"
 remote_num =  []
+
+def remotenum():
+    with open(access, "r") as f:
+        remote = json.load(f)
+    for num in remote.keys():
+        remote_num.append(num)
+    return remote_num
 
 
 def addremote(mac, name, func, ip):
