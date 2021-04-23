@@ -6,11 +6,11 @@ import json
 app = Flask(__name__)
 remote_num =  []
 
-remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "rw"))
+remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
 for num in remote.keys():
     remote_num.append(num)
 
-remote.pop("bc:dd:c2:55:63")
+remote["bc:dd:c2:55:63"] = {"name" : "test", "func" : "test", "ip" : "192.168.1.25"}
 print(remote)
 
 url="http://192.168.1.29:3000/assistant"
