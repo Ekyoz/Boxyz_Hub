@@ -10,7 +10,7 @@ remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
 for num in remote.keys():
     remote_num.append(num)
 
-del remote["bc:dd:c2:55:63"]
+remote.pop("bc:dd:c2:55:63")
 print(remote)
 
 url="http://192.168.1.29:3000/assistant"
