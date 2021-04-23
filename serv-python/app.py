@@ -15,7 +15,7 @@ def add_remote():
     func = request.args.get('func')
     ip = request.args.get('ip')
     try:
-        add_remote(mac, name, func, ip)
+        add_remote("test", "test", "test", "test")
         return 'ok'
     except:
         return 'Argument missing or invalid'
