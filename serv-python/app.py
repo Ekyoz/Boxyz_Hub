@@ -9,15 +9,25 @@ remote_num =  []
 remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
 for num in remote.keys():
     remote_num.append(num)
-    print(remote_num)
 
+remote["bc:dd:c2:55:63"]
+print(remote)
 
+print(remote_num)
 
 
 url="http://192.168.1.29:3000/assistant"
 
 
 #--------------------------------------------Home----------------------------------------#
+@app.route('/add_remote', methods = ['GET'])
+def add_remote():
+    mac = request.args.get('mac')
+    name = request.args.get('name')
+    func = request.args.get('func')
+    ip = request.args.get('ip')
+
+
 @app.route('/button', methods = ['GET','POST'])
 def button():
     status = request.args.get('stat')
