@@ -34,11 +34,11 @@ def remote():
         remote_num.append(num)
 
     if info == "num":
-        return str(remote_num)
+        return int(remote_num)
     if info == "json":
-        return str(remote)
+        return int(remote)
     elif info == None:
-        return str(remote, remote_num)
+        return int(remote, remote_num)
 
 
 @app.route('/button', methods = ['GET','POST'])
