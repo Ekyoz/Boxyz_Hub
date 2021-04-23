@@ -1,3 +1,4 @@
+from os import removedirs
 from flask import Flask, request, render_template, session, redirect
 import requests
 import json
@@ -5,6 +6,7 @@ import json
 app = Flask(__name__)
 
 remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
+print(remote["bc:dd:c2:55:63:67"])
 
 url="http://192.168.1.29:3000/assistant"
 
