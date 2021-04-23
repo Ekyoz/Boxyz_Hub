@@ -13,7 +13,7 @@ url="http://192.168.1.29:3000/assistant"
 
 #--------------------------------------------Home----------------------------------------#
 @app.route('/remote', methods = ['GET','POST'])
-def home():
+def remote():
     #remoteid = request.args.get('id')
     '''
     if remoteid is None:
