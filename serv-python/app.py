@@ -34,7 +34,7 @@ def remote():
         return str(num)
     if info == "json":
         return str(remote)
-    return str(remote + num)
+    return str(remote) and (num)
 
 
 @app.route('/button', methods = ['GET','POST'])
