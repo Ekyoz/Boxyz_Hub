@@ -5,7 +5,11 @@ from remote import addremote, delremote, remotenum, access
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
+
 num = remotenum()
+with open(access, "r") as f:
+    remote = json.load(f)
+
 
 
 
@@ -13,14 +17,12 @@ num = remotenum()
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
-    with open(access, "r") as f:
-        remote = json.load(f)
     if info == "num":
         return str(num)
     if info == "json":
         return jsonify(str(remote))
     if info is None or info == "":
-        return 'Argument missing'
+        return 'Argument missing!'
 
 @app.route('/add_remote', methods = ['GET'])
 def add_remote():
@@ -31,27 +33,33 @@ def add_remote():
     ip = request.args.get('ip')
     with open(access, "r") as f:
         remote = json.load(f)
-
-    if mac in remote:
-        return 'Already exist'
-    else:
-        addremote(mac, name, func_on, func_off, ip)
-        return 'Ok, remote was added whit mac: ' + mac
+    try:
+        if mac in remote:
+            return 'Already exist'
+        else:
+            addremote(mac, name, func_on, func_off, ip)
+            return 'Ok, remote was added whit mac: ' + mac +'.'
+    except:
+        return 'Error! Check argument.'
 
 
 @app.route('/del_remote', methods=['GET'])
 def del_remote():
     key = request.args.get('keys')
-    delremote(key)
-    return 'Ok, remote was deleted whit mac' + key
+    try:
+        if key in remote.keys():
+            delremote(key)
+            return 'Ok, remote was deleted whit mac' + key +'.'
+        else:
+            return 'This remote not existe!'
+    except:
+        return 'Error! Check argument.'
 
 
 @app.route('/button', methods = ['GET'])
 def button():
     status = request.args.get('stat')
     mac = request.args.get('mac')
-    with open(access, "r") as f:
-        remote = json.load(f)
     if mac in num:
         if status == "on":
             requests.post(url=url, data=remote[mac]["func_on"])
@@ -60,7 +68,7 @@ def button():
             requests.post(url=url, data=remote[mac]["func_off"])
             return 'Ok, turn off!'
     else:
-        return 'Remote or argument is invalid'
+        return 'Remote or argument is invalid.'
 
 
 

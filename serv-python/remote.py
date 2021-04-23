@@ -13,14 +13,13 @@ def remotenum():
     return remote_num
 
 
-
 def addremote(mac, name, func_on, func_off, ip):
     with open(access, "r") as f:
         remote = json.load(f)
-
-    with open(access, "w") as f:
-        remote[mac] = {"name" : str(name), "func_on" : str(func_on),"func_off" : str(func_off) , "ip" : str(ip)}
-        json.dump(remote, f, indent=6)
+    if mac or name or func_on or func_off or ip is not None:
+        with open(access, "w") as f:
+            remote[mac] = {"name" : str(name), "func_on" : str(func_on),"func_off" : str(func_off) , "ip" : str(ip)}
+            json.dump(remote, f, indent=6)
 
 
 def delremote(keys):
