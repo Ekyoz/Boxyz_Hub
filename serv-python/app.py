@@ -38,7 +38,7 @@ def add_remote():
             return 'Already exist'
         else:
             addremote(mac, name, func_on, func_off, ip)
-            return 'Ok, remote was added whit mac: ' + mac +'.'
+            return 'Ok, remote was added with mac: ' + mac +'.'
     except:
         return 'Error! Check argument.'
 
@@ -51,7 +51,7 @@ def del_remote():
     try:
         if key in remote.keys():
             delremote(key)
-            return 'Ok, remote was deleted whit mac' + key +'.'
+            return 'Ok, remote was deleted with mac' + key +'.'
         else:
             return 'This remote not existe!'
     except:
