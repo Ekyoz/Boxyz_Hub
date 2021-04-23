@@ -10,10 +10,10 @@ url="http://192.168.1.29:3000/assistant"
 #--------------------------------------------Home----------------------------------------#
 @app.route('/add_remote', methods = ['GET'])
 def add_remote():
-    mac = request.args.get('mac')
-    name = request.args.get('name')
-    func = request.args.get('func')
-    ip = request.args.get('ip')
+    mac = str(request.args.get('mac'))
+    name = str(request.args.get('name'))
+    func = str(request.args.get('func'))
+    ip = str(request.args.get('ip'))
     add_remote(mac, name, func, ip)
 
 

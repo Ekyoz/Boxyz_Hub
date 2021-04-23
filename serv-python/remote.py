@@ -32,3 +32,4 @@ def del_remote(keys):
     with open(access, "w") as f:
         remote.pop(keys, None)
         json.dump(remote, f, indent=6)
+
