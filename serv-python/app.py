@@ -14,8 +14,14 @@ url="http://192.168.1.29:3000/assistant"
 #--------------------------------------------Home----------------------------------------#
 @app.route('/remote', methods = ['GET','POST'])
 def remote():
-    
-    return remote[0]
+    #remoteid = request.args.get('id')
+    '''
+    if remoteid is None:
+        return remote["remote"]
+    if remoteid is not None:
+        return remote["remote"][remoteid]
+    '''
+    return int(remote["remote"])
 
 @app.route('/button', methods = ['GET','POST'])
 def button():
