@@ -12,7 +12,7 @@ for num in remote.keys():
     remote_num.append(num)
 
 remote["bc:dd:c2:55:63"] = {"name" : "test", "func" : "test", "ip" : "192.168.1.25"}
-json.dumps(remote)
+json.dump(remote, file)
 file.close()
 
 print(remote)
