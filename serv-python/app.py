@@ -74,10 +74,10 @@ def button():
     if mac in num:
         if status == "on":
             try:
-                requests.post(url=url, data=jsonify({
+                requests.post(url=url, data={
                     "user" : {str(user["users"][0]["name"])},
                     "command" : {str(remote[mac]["func_on"])}
-                }))
+                })
                 return 'Ok, turn on!'
             except:
                 return 'The server is down or cannot connect!'
