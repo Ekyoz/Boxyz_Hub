@@ -67,7 +67,7 @@ def button():
             requests.post(url=url, data=remote[mac]["func_off"])
             return 'Ok, turn off!'
     else:
-        return 'Remote or argument is invalid.'
+        return 'Remote not exist!'
 
 
 
