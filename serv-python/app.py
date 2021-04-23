@@ -33,7 +33,7 @@ def remote():
     if info == "num":
         return str(num)
     if info == "json":
-        return str(remote)
+        return jsonify(str(remote))
     if info is None or info == "":
         return 'Argument missing'
 
