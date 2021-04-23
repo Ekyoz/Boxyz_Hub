@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-remotejson = open("/home/alexandre/Bureau/Projet/Domotic/serv-python/remote.json", "r")
+remotejson = open("serv-python/remote.json", "r")
 remote = json.load(remotejson)
 for valeur in remote.values():
     print(valeur)
