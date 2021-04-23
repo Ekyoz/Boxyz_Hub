@@ -21,7 +21,7 @@ def remote():
     if remoteid is not None:
         return remote["remote"][remoteid]
     '''
-    return remote
+    return remote[0]
 
 @app.route('/button', methods = ['GET','POST'])
 def button():
