@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-remotejson = open("../serv-python/remote.json", "r")
+remotejson = open("home/pi/Boxyz/serv-python/remote.json", "r")
 remote = json.load(remotejson)
 
 url="http://192.168.1.29:3000/assistant"
