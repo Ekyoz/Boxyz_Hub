@@ -5,6 +5,8 @@ from remote import add_remote, del_remote
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
+del_remote(keys="null")
+
 
 
 #--------------------------------------------Home----------------------------------------#
