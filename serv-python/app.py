@@ -6,10 +6,13 @@ import json
 app = Flask(__name__)
 remote_num =  []
 
-file = open("/home/pi/Boxyz/serv-python/remote.json", "wr")
+file = open("/home/pi/Boxyz/serv-python/remote.json", "r")
 remote = json.load(file)
 for num in remote.keys():
     remote_num.append(num)
+file.close()
+
+file = open("/home/pi/Boxyz/serv-python/remote.json", "w")
 
 remote["bc:dd:c2:55:63"] = {"name" : "test", "func" : "test", "ip" : "192.168.1.25"}
 json.dump(remote, file)
