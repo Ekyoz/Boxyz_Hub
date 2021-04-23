@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 remote_num =  []
 
-remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "r"))
+remote = json.load(open("/home/pi/Boxyz/serv-python/remote.json", "rw"))
 for num in remote.keys():
     remote_num.append(num)
 
