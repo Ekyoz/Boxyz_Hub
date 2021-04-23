@@ -9,12 +9,13 @@ def remote_info(info=None):
         remote = json.load(f)
     for num in remote.keys():
         remote_num.append(num)
+        
     if info == "num":
-        print(remote_num)
+        return remote_num
     if info == "json":
-        print(remote)
+        return remote
     elif info == None:
-        print(remote, remote_num)
+        return remote, remote_num
 
 def addremote(mac, name, func, ip):
     with open(access, "r") as f:
