@@ -32,7 +32,7 @@ def remote():
     if info == "num":
         return str(num)
     if info == "json":
-        return render_template(access)
+        return render_template("serv-python/remote.json")
     elif info == None:
         return open(access, "r"), str(num)
 
