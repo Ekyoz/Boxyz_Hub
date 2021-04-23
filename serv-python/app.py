@@ -5,6 +5,8 @@ from remote import addremote, delremote, remote_info
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
+info_stat = remote_info(info)
+print(info_stat)
 
 
 
@@ -28,7 +30,7 @@ def del_remote():
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
-    info_stat = remote_info(info)
+    
     return info_stat
 
 
