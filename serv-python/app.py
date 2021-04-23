@@ -14,7 +14,7 @@ def add_remote():
     name = request.args.get('name')
     func = request.args.get('func')
     ip = request.args.get('ip')
-    add_remote(mac=mac, name=name, ip=ip, func=func)
+    add_remote(mac, name, func, ip)
 
 
 
