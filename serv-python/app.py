@@ -33,9 +33,9 @@ def remote():
     if info is None:
         return remote_info()
     if info == "json":
-        return remote_info(json)
+        return remote_info("json")
     elif info == "num":
-        return remote_info(num)
+        return remote_info("num")
     else:
         return 'Argument invalid'
 
