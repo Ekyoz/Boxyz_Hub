@@ -36,14 +36,14 @@ def add_remote():
         return 'Already exist'
     else:
         addremote(mac, name, func_on, func_off, ip)
-        return 'ok'
+        return 'Ok, remote was added whit mac: ' + mac
 
 
 @app.route('/del_remote', methods=['GET'])
 def del_remote():
     key = request.args.get('keys')
     delremote(key)
-    return 'ok'
+    return 'Ok, remote was deleted whit mac' + key
 
 
 @app.route('/button', methods = ['GET'])
@@ -52,10 +52,13 @@ def button():
     mac = request.args.get('mac')
     with open(access, "r") as f:
         remote = json.load(f)
-    if status == "on":
     if mac in num:
-        requests.post(url=url, data=remote[mac]["function"])
-        return 'ok'
+        if status == "on":
+            requests.post(url=url, data=remote[mac]["func_on"])
+            return 'Ok, turn on!'
+        elif status == "off":
+            requests.post(url=url, data=remote[mac]["func_off"])
+            return 'Ok, turn off!'
     else:
         return 'Remote or argument is invalid'
 
