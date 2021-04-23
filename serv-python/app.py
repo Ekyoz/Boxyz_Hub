@@ -29,14 +29,14 @@ def add_remote():
     ip = request.args.get('ip')
     with open(access, "r") as f:
         remote = json.load(f)
-    try:
-        if mac in remote:
-            return 'Already exist'
-        else:
+    if mac in remote:
+        return 'Already exist'
+    else:
+        try:
             addremote(mac, name, func_on, func_off, ip)
             return 'Ok, remote was added with mac: ' + mac +'.'
-    except:
-        return 'Error! Check argument.'
+        except:
+            return 'Error! Check argument.'
 
 
 @app.route('/del_remote', methods=['GET'])
