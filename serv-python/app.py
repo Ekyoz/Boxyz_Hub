@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, session, redirect
 import requests
 import json
-from remote.py import addremote
+from remote import addremote
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
