@@ -65,8 +65,8 @@ def button():
         if status == "on":
             try:
                 requests.post(url=url, data=jsonify({
-                    "user" : {user["users"][0]["name"]},
-                    "command" : {remote[mac]["func_on"]}
+                    "user" : {str(user["users"][0]["name"])},
+                    "command" : {str(remote[mac]["func_on"])}
                 }))
                 return 'Ok, turn on!'
             except:
