@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, session, redirect, jsonify
 import requests
 import json
-from remote import addremote, delremote, remotenum, access, remote_num
+from remote import addremote, delremote, remotenum, access
 
 app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
@@ -27,7 +27,6 @@ def del_remote():
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
-    remote_num = []
     num = remotenum()
     if info == "num":
         return str(num)

@@ -7,6 +7,7 @@ remote_num =  []
 def remotenum():
     with open(access, "r") as f:
         remote = json.load(f)
+    remote_num =  []
     for num in remote.keys():
         remote_num.append(num)
     return remote_num
