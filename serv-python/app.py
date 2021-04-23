@@ -7,8 +7,6 @@ app = Flask(__name__)
 url="http://192.168.1.29:3000/assistant"
 
 num = remotenum()
-with open(access, "r") as f:
-    remote = json.load(f)
 
 
 
@@ -17,6 +15,8 @@ with open(access, "r") as f:
 @app.route('/remote', methods=['GET'])
 def remote():
     info = request.args.get('info')
+    with open(access, "r") as f:
+        remote = json.load(f)
     if info == "num":
         return str(num)
     if info == "json":
@@ -46,6 +46,8 @@ def add_remote():
 @app.route('/del_remote', methods=['GET'])
 def del_remote():
     key = request.args.get('keys')
+    with open(access, "r") as f:
+        remote = json.load(f)
     try:
         if key in remote.keys():
             delremote(key)
@@ -60,6 +62,8 @@ def del_remote():
 def button():
     status = request.args.get('stat')
     mac = request.args.get('mac')
+    with open(access, "r") as f:
+        remote = json.load(f)
     if mac in num:
         if status == "on":
             requests.post(url=url, data=remote[mac]["func_on"])
