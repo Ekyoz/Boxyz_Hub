@@ -32,9 +32,9 @@ def remote():
     if info == "num":
         return str(num)
     if info == "json":
-        return str(open(access, "r"))
+        return open(access, "r")
     elif info == None:
-        return str(open(access, "r")), str(num)
+        return open(access, "r"), str(num)
 
 
 @app.route('/button', methods = ['GET','POST'])
