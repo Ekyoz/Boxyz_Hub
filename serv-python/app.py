@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, session, redirect
+from flask import Flask, request, render_template, session, redirect, jsonify
 import requests
 import json
 from remote import addremote, delremote, remotenum, access
@@ -32,9 +32,9 @@ def remote():
     if info == "num":
         return str(num)
     if info == "json":
-        return render_template("remote.json")
+        return jsonify(open(access, "r"))
     elif info == None:
-        return open(access, "r"), str(num)
+        return jsonify(open(access, "r")), str(num)
 
 
 @app.route('/button', methods = ['GET','POST'])
