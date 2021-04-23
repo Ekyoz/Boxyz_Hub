@@ -1,7 +1,7 @@
 import json
 from os import access
 
-access = "serv-python/remote.json"
+access = "../serv-python/remote.json"
 
 def remote_info(info=None):
     remote_num =  []
