@@ -1,7 +1,7 @@
 import json
 from os import access
 
-access = "../serv-python/remote.json"
+access = "serv-python/remote.json"
 remote_num =  []
 
 def remotenum():
@@ -9,7 +9,6 @@ def remotenum():
         remote = json.load(f)
     for num in remote.keys():
         remote_num.append(num)
-    remote_num =  []
     return remote_num
 
 
@@ -31,3 +30,4 @@ def delremote(keys):
     with open(access, "w") as f:
         remote.pop(keys, None)
         json.dump(remote, f, indent=6)
+
