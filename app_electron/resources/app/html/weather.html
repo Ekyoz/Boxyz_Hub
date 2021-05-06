@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="../js/weather.js"></script>
+    <script src="../js/warm.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+
+    <video autoplay muted loop id="myVideo">
+        <source src="../video/blue.mp4" type="video/mp4">
+    </video>
+</head>
+
+<body onload="weather(), temp()" class="animation-fade">
+    <nav>
+        <div class="pos-f-t fixed-top">
+            <div class="collapse fixed" id="navbar">
+                <div class="p-4 bg-dark">
+                    <h4 class="text-white">Collapsed content</h4>
+                    <span class="text-muted">Toggleable via the navbar brand.</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <a href="home.html"><img src="../image/home.png" style="width: 5%;" class="m-2 ml-2"></a>
+                </div>
+                <div class="col-1">
+                    <button class="navbar-toggler text-center" data-toggle="collapse" data-target="#navbar">
+                        <span class="navbar-toggler-icon"><img src="../image/line.png" style="width: 300%;" class="mt-1"></span>
+                    </button>            
+                </div>
+                <div class="col">
+                    <a href="settings.html"><img src="../image/setting.png" style="width: 5%;" class="m-2 float-right"></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <br><br><br>
+        <div class="row border shadow-lg rounded-pill m-5 pt-5 pb-5">
+            <div class="col-4 border-right">
+                <div id="img_weather" style="width: 80%;" class="ml-5"></div>
+            </div>
+            <div class="col-4 border-right text-center">
+                <h1 style="font-weight: bold; font-size: 64px;" id="weather"></h1>
+                <br><br>
+                <h1 style="font-size: 38px; font-weight: bolder;">Humidité : <p id="hum"></p></h1>
+                <br>
+                <h1 style="font-size: 38px; font-weight: bolder;">Vent : <p id="vent"></p></h1>
+            </div>
+            <div class="col-4 text-center">
+                <div class="border-bottom">
+                    <h6 style="font-size: 20px; font-weight: bold;">Température</h6>
+                    <h1 style="font-size: 120px; font-weight: bold;"><p id="temp"></p></h1>
+                    <br>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col border-right">
+                        <h6 style="font-size: 20px; font-weight: bold;">Température Max</h6>
+                        <h1 style="font-size: 120px;"><p id="temp_max"></p></h1>
+                    </div>
+                    <div class="col mr-2">
+                        <h6 style="font-size: 20px; font-weight: bold;">Température Min</h6>
+                        <h1 style="font-size: 120px;"><p id="temp_min"></p></h1>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <p class="weather"></p>
+</body>
+</html>    
+
