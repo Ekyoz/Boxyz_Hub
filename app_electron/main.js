@@ -13,7 +13,7 @@ function createWindow() {
         nodeIntegration: true
     }
 })
-  mainWindow.loadFile('resources/app/html/home.html')
+  mainWindow.loadFile('resources/html/home.html')
 }
 app.whenReady().then(() => {
   createWindow()
