@@ -1,7 +1,7 @@
 from flask import Flask, request, render_template, session, redirect, jsonify
 import requests
 import json
-from remote import addremote, delremote, remotenum, access_remote, url
+from remote import addremote, delremote, remotenum, access_remote, url, access_user
 
 app = Flask(__name__)
 
@@ -63,6 +63,8 @@ def button():
     num = remotenum()
     with open(access_remote, "r") as f:
         remote = json.load(f)
+    with open(access_user, "r") as f:
+        user = json.load(f)
     if mac in num:
         if status == "on":
             try:
