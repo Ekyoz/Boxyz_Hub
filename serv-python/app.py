@@ -46,13 +46,12 @@ def del_remote():
     key = request.args.get('keys')
     with open(access_remote, "r") as f:
         remote = json.load(f)
-    try:
-        if key in remote.keys():
-            delremote(key)
-            return 'Ok, remote was deleted with mac ' + key +'.'
-        else:
-            return 'This remote not existe!'
-    except:
+    if key in remote.keys():
+        delremote(key)
+        return 'Ok, remote was deleted with mac ' + key +'.'
+    if key not in remote.keys():
+        return 'This remote not existe!'
+    else:
         return 'Error! Check argument.'
 
 
