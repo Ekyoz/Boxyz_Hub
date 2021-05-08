@@ -64,8 +64,6 @@ def button():
     num = remotenum()
     with open(access_remote, "r") as f:
         remote = json.load(f)
-    with open(access_user, "r") as f:
-        user = json.load(f)
     if mac in num:
         if status == "on":
             try:
