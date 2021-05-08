@@ -1,15 +1,10 @@
 from flask import Flask, request, render_template, session, redirect, jsonify
 import requests
 import json
-from remote import addremote, delremote, remotenum, access_remote, url, access_user
+from remote import addremote, delremote, remotenum, access_remote, url
 
 app = Flask(__name__)
 
-with open(access_user, "r") as f:
-    user = json.load(f)
-
-
-print(str(user["users"][0]["name"]))
 
 #--------------------------------------------Remote----------------------------------------#
 @app.route('/remote', methods=['GET'])
