@@ -59,18 +59,18 @@ def del_remote():
 @app.route('/button', methods = ['GET'])
 def button():
     status = request.args.get('stat')
-    mac = request.args.get('mac')
+    name = request.args.get('name')
     num = remotenum()
     with open(access_remote, "r") as f:
         remote = json.load(f)
     with open(access_user, "r") as f:
         user = json.load(f)
-    if mac in num:
+    if name in num:
         if status == "on":
             try:
                 requests.post(url=url, data={
                     "user" : {str(user["users"][0]["name"])},
-                    "command" : {str(remote[mac]["func_on"])}
+                    "command" : {str(remote[name]["func_on"])}
                 })
                 return 'Ok, turn on!'
             except:
@@ -79,7 +79,7 @@ def button():
             try:
                 requests.post(url=url, data={
                     "user" : {user["users"][0]["name"]},
-                    "command" : {remote[mac]["func_off"]}
+                    "command" : {remote[name]["func_off"]}
                 })
                 return 'Ok, turn off!'
             except:
