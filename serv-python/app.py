@@ -69,7 +69,7 @@ def button():
         if status == "on":
             try:
                 requests.post(url=url, data={
-                    "user" : {str(user["users"][0]["name"])},
+                    "user" : "alexandre",
                     "command" : {str(remote[name]["func_on"])}
                 })
                 return 'Ok, turn on!'
@@ -78,7 +78,7 @@ def button():
         elif status == "off":
             try:
                 requests.post(url=url, data={
-                    "user" : {user["users"][0]["name"]},
+                    "user" : "alexanrde",
                     "command" : {remote[name]["func_off"]}
                 })
                 return 'Ok, turn off!'
