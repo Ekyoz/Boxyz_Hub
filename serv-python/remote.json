@@ -1,12 +1,10 @@
 {
-      "bc:dd:c2:55:63:67": {
-            "name": "salon",
-            "function": "allume lampadaire",
-            "ip": "192.168.1.48"
-      },
-      "bc:dd:c2:55:63:48": {
-            "name": "chambre",
-            "function": "allume lampe",
-            "ip": "192.168.1.48"
+      "D8:BF:C0:14:B7:F1": {
+            "func_off": "test", 
+            "name": "test", 
+            "ip": "192.168.1.52", 
+            "func_1": "allume lampadaire alex", 
+            "func_3": "test", 
+            "func_2": "test"
       }
 }

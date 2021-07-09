@@ -15,11 +15,11 @@ def remotenum():
         remote_num.append(num)
     return remote_num
 
-def addremote(mac, name, func_on, func_off, ip):
+def addremote(mac, name, func_1, func_2, func_3, func_off, ip):
     with open(access_remote, "r") as f:
         remote = json.load(f)
     with open(access_remote, "w") as f:
-        remote[mac] = {"name" : str(name), "func_on" : str(func_on),"func_off" : str(func_off) , "ip" : str(ip)}
+        remote[mac] = {"name" : str(name), "func_1" : str(func_1),"func_2" : str(func_2), "func_3" : str(func_3), "func_off" : str(func_off), "ip" : str(ip)}
         json.dump(remote, f, indent=6)
 
 def delremote(keys):

@@ -1,7 +1,8 @@
 from flask import Flask, request, render_template, session, redirect, jsonify
+from remote import addremote, delremote, remotenum, access_remote, url, access_user
 import requests
 import json
-from remote import addremote, delremote, remotenum, access_remote, url, access_user
+import unicodedata
 
 app = Flask(__name__)
 
@@ -26,17 +27,19 @@ def remote():
 def add_remote():
     mac = request.args.get('mac')
     name = request.args.get('name')
-    func_on = request.args.get('func_on')
+    func_1 = request.args.get('func_1')
+    func_2 = request.args.get('func_2')
+    func_3 = request.args.get('func_3')
     func_off = request.args.get('func_off')
     ip = request.args.get('ip')
     with open(access_remote, "r") as f:
         remote = json.load(f)
     if mac in remote:
         return 'Already exist'
-    if mac and name and func_off and func_on and ip is not None:
-        addremote(mac, name, func_on, func_off, ip)
+    if mac and name and func_1 and func_2 and func_3 and func_off and ip is not None:
+        addremote(mac, name, func_1, func_2, func_3, func_off, ip)
         return 'Ok, remote was added with mac: ' + mac +'.'
-    elif mac or name or func_off or func_on or ip is None:
+    elif mac or name or func_1 or func_2 or func_3 or func_off or ip is None:
         return 'Error, Argument missing! \n Check this!'
 
 
@@ -59,31 +62,69 @@ def del_remote():
 @app.route('/button', methods = ['GET'])
 def button():
     status = request.args.get('stat')
-    name = request.args.get('name')
+    mac = request.args.get('mac')
     num = remotenum()
     with open(access_remote, "r") as f:
         remote = json.load(f)
     with open(access_user, "r") as f:
         user = json.load(f)
-    if name in num:
-        if status == "on":
+    if mac in num:
+        if status == "1":
             try:
                 requests.post(url=url, data={
                     "user" : "alexandre",
-                    "command" : {str(remote[name]["func_on"])}
+                    "command" : {str(remote[mac]["func_1"])}
                 })
                 return 'Ok, turn on!'
             except:
                 return 'The server is down or cannot connect!'
-        elif status == "off":
+        if status == "2":
             try:
                 requests.post(url=url, data={
-                    "user" : "alexanrde",
-                    "command" : {remote[name]["func_off"]}
+                    "user" : "alexandre",
+                    "command" : {str(remote[mac]["func_2"])}
                 })
-                return 'Ok, turn off!'
+                return 'Ok, turn on!'
             except:
                 return 'The server is down or cannot connect!'
+        if status == "3":
+            try:
+                requests.post(url=url, data={
+                    "user" : "alexandre",
+                    "command" : {remote[mac]["func_3"]}
+                })
+                return 'Ok, turn on!'
+            except:
+                return 'The server is down or cannot connect!'
+        if status == "off":
+            func_off_PR = remote[mac]["func_off"].keys()
+            func_off = str(func_off_PR).strip('[]').strip('u').strip("'")
+            print(func_off)
+            if 1 in remote[mac]["func_off"].keys():
+                try:
+                    requests.post(url=url, data={
+                        "user" : "alexandre",
+                        "command" : {remote[mac]["func_off"]}
+                    })
+                    return 'Ok, turn off!'
+                except:
+                    return 'The server is down or cannot connect!'
+            if 2 in remote[mac]["func_off"].keys():
+                compt = 0
+                while compt != 2:
+                    compt += 1
+                    try:
+                        requests.post(url=url, data={
+                            "user" : "alexandre",
+                            "command" : {remote[mac]["func_off"][compt]}
+                        })
+                        return 'Ok, turn off!'
+                    except:
+                        return 'The server is down or cannot connect!'
+            if status > 4:
+                return 'You click too much time!'
+
+
     else:
         return 'Remote not exist!'
 
