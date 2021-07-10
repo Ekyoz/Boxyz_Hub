@@ -7,22 +7,9 @@ import unicodedata
 app = Flask(__name__)
 
 
-#--------------------------------------------Remote----------------------------------------#
-@app.route('/remote', methods=['GET'])
-def remote():
-    info = request.args.get('info')
-    num = remotenum()
-    with open(access_remote, "r") as f:
-        remote = json.load(f)
-    if info == "num":
-        return str(num)
-    if info == "json":
-        return jsonify(str(remote))
-    if info is None or info == "":
-        return 'Argument missing!'
+#--------------------------------------------Remote--------------------------------------------#
 
-
-#--------------------------------------------Add remote----------------------------------------#
+#----------------Add remote----------------#
 @app.route('/add_remote', methods = ['GET'])
 def add_remote():
     mac = request.args.get('mac')
@@ -42,8 +29,7 @@ def add_remote():
     elif mac or name or func_1 or func_2 or func_3 or func_off or ip is None:
         return 'Error, Argument missing! \n Check this!'
 
-
-#--------------------------------------------Del remote----------------------------------------#
+#----------------Del remote----------------#
 @app.route('/del_remote', methods=['GET'])
 def del_remote():
     key = request.args.get('keys')
@@ -57,9 +43,22 @@ def del_remote():
     else:
         return 'Error! Check argument.'
 
+#----------------Remote----------------#
+@app.route('/remote', methods=['GET'])
+def remote():
+    info = request.args.get('info')
+    num = remotenum()
+    with open(access_remote, "r") as f:
+        remote = json.load(f)
+    if info == "num":
+        return str(num)
+    if info == "json":
+        return jsonify(str(remote))
+    if info is None or info == "":
+        return 'Argument missing!'
 
-#--------------------------------------------Button----------------------------------------#
-@app.route('/button', methods = ['GET'])
+#----------------Remote Func----------------#
+@app.route('/remote/func', methods = ['GET'])
 def button():
     status = request.args.get('stat')
     mac = request.args.get('mac')
@@ -121,8 +120,8 @@ def button():
                         return 'Ok, turn off!'
                     except:
                         return 'The server is down or cannot connect!'
-            if status > 4:
-                return 'You click too much time!'
+        if status > 4:
+            return 'You click too much time!'
 
 
     else:
@@ -130,6 +129,18 @@ def button():
 
 
 
-if __name__ == "__main__":
-    app.run(port=3030, host='0.0.0.0', debug=True)
+#--------------------------------------------App Android--------------------------------------------#
 
+#----------------Light----------------#
+@app.route('/app/lights', methods = ['GET'])
+def lights():
+    func = request.args.add("func")
+    name = request.args.add("name")
+
+
+
+
+
+if __name__ == "__main__":
+    
+    app.run(port=3030, host='0.0.0.0', debug=True)

@@ -1,9 +1,12 @@
 {
       "D8:BF:C0:14:B7:F1": {
-            "func_off": "test", 
+            "func_off": {
+                  "1": "eteint le lampadaire alex",
+                  "2": "eteint le lampadaire alex"
+            }, 
             "name": "test", 
             "ip": "192.168.1.52", 
-            "func_1": "allume lampadaire alex", 
+            "func_1": "allume le lampadaire alex", 
             "func_3": "test", 
             "func_2": "test"
       }
