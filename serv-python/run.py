@@ -7,7 +7,6 @@ import json
 main = Flask(__name__)
 main.register_blueprint(AppRoom, url_prefix="/room")
 main.register_blueprint(serv, url_prefix="/serv")
-url="http://localhost:3000/assistant"
 
 
 
