@@ -1,0 +1,13 @@
+{
+      "rooms": {
+            "01": {
+                  "name": "",
+                  "icon": "",
+                  "accessories": {},
+                  "light": {},
+                  "remote": {
+                        "01-01R": null
+                  }
+            }
+      }
+}
