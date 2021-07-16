@@ -5,3 +5,5 @@ serv-python/remote.pyc
 rooms-save.json
 __pycache__
 serv-python/__pycache__
+cert.pem
+key.pem

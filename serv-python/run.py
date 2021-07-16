@@ -1,12 +1,12 @@
 from flask import Flask, request
-from app.android.room import *
-from app.server.serv import *
+from app.android.room import AppRoom
+from app.server.server import server
 import requests
 import json
 
 main = Flask(__name__)
 main.register_blueprint(AppRoom, url_prefix="/room")
-main.register_blueprint(serv, url_prefix="/serv")
+main.register_blueprint(server, url_prefix="/server")
 
 
 
@@ -83,4 +83,4 @@ def button():
         return 'Remote not exist!'
 
 if __name__ == "__main__":
-    main.run(port=3030, host='0.0.0.0', debug=True)
+    main.run(port=3030, host='0.0.0.0', debug=True, ssl_context=('cert.pem', 'key.pem'))

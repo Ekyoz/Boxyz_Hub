@@ -1,13 +1,11 @@
 {
       "rooms": {
             "01": {
-                  "name": "",
-                  "icon": "",
+                  "name": "Salon",
+                  "icon": "chambre",
                   "accessories": {},
                   "light": {},
-                  "remote": {
-                        "01-01R": null
-                  }
+                  "remote": {}
             }
       }
 }
