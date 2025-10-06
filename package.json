@@ -1,0 +1,21 @@
+{
+  "name": "boxyz-hub",
+  "version": "1.0.0",
+  "description": "Application de domotique pour contrôler votre maison intelligente avec Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/Ekyoz/Boxyz_Hub",
+  "keywords": [
+    "Electron",
+    "domotique",
+    "home-automation",
+    "smart-home"
+  ],
+  "author": "Ekyoz",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^12.0.5"
+  }
+}

@@ -7,3 +7,4 @@ __pycache__
 serv-python/__pycache__
 cert.pem
 key.pem
+node_modules
