@@ -15,4 +15,5 @@ function weather() {
         var img = document.createElement('img');
         img.src = "../image/weather/" + api_json["weather"]["0"]["icon"] + ".png";
         cont.appendChild(img);
-}}
+    };
+}

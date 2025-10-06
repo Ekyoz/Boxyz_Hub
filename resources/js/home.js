@@ -37,4 +37,5 @@ function weather() {
     img_home.width = "70";
     img_home.src = "../image/weather/" + api_json["weather"]["0"]["icon"] + ".png";
     cont_home.appendChild(img_home);  
-}}
+  };
+}
