@@ -30,6 +30,12 @@ cd Boxyz_Hub
 npm install
 ```
 
+3. Configurer votre clé API OpenWeatherMap :
+```bash
+cp config.example.js config.js
+```
+Puis éditer `config.js` et ajouter votre clé API OpenWeatherMap.
+
 ## 🎯 Lancement de l'application
 
 Pour démarrer l'application Electron :
@@ -89,11 +95,20 @@ Les pièces disponibles :
 ### API Météo
 L'application utilise l'API OpenWeatherMap. Pour configurer votre propre clé API :
 
-1. Ouvrir `resources/js/home.js`
-2. Remplacer la clé API dans la fonction `weather()` :
-```javascript
-api.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=VOTRE_VILLE&appid=VOTRE_CLE_API&lang=fr&units=metric");
+1. Créer un fichier `config.js` à la racine du projet en copiant `config.example.js` :
+```bash
+cp config.example.js config.js
 ```
+
+2. Ouvrir `config.js` et remplacer `YOUR_API_KEY_HERE` par votre clé API OpenWeatherMap :
+```javascript
+module.exports = {
+    openWeatherMapApiKey: 'VOTRE_CLE_API',
+    weatherCity: 'Villeurbanne'  // Ou votre ville
+};
+```
+
+**Note importante**: Le fichier `config.js` contient votre clé API et ne doit **jamais** être committé dans Git. Il est déjà inclus dans `.gitignore`.
 
 ### Contrôle des lumières
 L'application communique avec un serveur assistant. Modifier l'URL dans `resources/js/light.js` :

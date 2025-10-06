@@ -1,6 +1,9 @@
 function weather() {
     var api = new XMLHttpRequest();
-    api.open("GET", "http://api.openweathermap.org/data/2.5/weather?q=Villeurbanne&appid=33b1082fef775d69d48a6f08edbf88bb&lang=fr&units=metric");
+    // Load configuration from config.js
+    const config = require('../../config.js');
+    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${config.weatherCity}&appid=${config.openWeatherMapApiKey}&lang=fr&units=metric`;
+    api.open("GET", apiUrl);
     api.responseType = 'json';
     api.send();
     api.onload = function() {
